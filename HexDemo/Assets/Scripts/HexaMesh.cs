@@ -11,50 +11,48 @@ public class HexaMesh : MonoBehaviour
     List<int> triangles;
     MeshCollider meshCollider;
     List<Color> colors;
-
+    HexaObject hex;
+    public Color colorMs;
     private void Awake()
     {
-        GetComponent<MeshFilter>().mesh = hexaMesh = new Mesh();
-        hexaMesh.name = "HexaMesh";
+        hex = FindObjectOfType<HexaObject>();
+        hexaMesh = new Mesh();
+        GetComponent<MeshFilter>().sharedMesh = hexaMesh;
+        hexaMesh.name = "Hexa Mesh";
         vertices = new List<Vector3>();
         triangles = new List<int>();
         meshCollider = gameObject.GetComponent<MeshCollider>();
         colors = new List<Color>();
 
-    }
-    private void Start()
-    {
-        meshCollider.convex = true;
+        colorMs = hex.color;
+        GenerateMesh();
+
     }
 
-    public void Triangulate(HexaObject[] hexaobj)
+   
+    public void GenerateMesh()
     {
+       
         hexaMesh.Clear();
         vertices.Clear();
         triangles.Clear();
         colors.Clear();
-        for (int i = 0; i < hexaobj.Length; i++)
+        Vector2 center = gameObject.transform.localPosition;
+        for (int i = 0; i < 6; i++)
         {
-            Triangulate(hexaobj[i]);
+            AddTriangle(center, (center + HexaInfo.corners[i]), (center + HexaInfo.corners[i + 1]));
+            AddTrianglesColor(colorMs);
+
         }
+        meshCollider.sharedMesh = hexaMesh;
+
         hexaMesh.vertices = vertices.ToArray();
         hexaMesh.colors = colors.ToArray();
         hexaMesh.triangles = triangles.ToArray();
         hexaMesh.RecalculateNormals();
     }
 
-    void Triangulate(HexaObject hexaobj)
-    {
-        Vector2 center = hexaobj.transform.localPosition;
-        for (int i = 0; i < 6; i++)
-        {
-            AddTriangle(center, (center + HexaInfo.corners[i]), (center + HexaInfo.corners[i + 1]));
-            AddTrianglesColor(hexaobj.color);
-        }
 
-        meshCollider.sharedMesh = hexaMesh;
-
-    }
 
     public void AddTriangle(Vector2 v1, Vector2 v2, Vector2 v3)
     {

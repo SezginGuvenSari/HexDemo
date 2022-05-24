@@ -32,7 +32,7 @@ public struct HexaCord
 
     public static HexaCord FromOffsetCoordinates(int x, int y)
     {
-        return new HexaCord(x-y/2, y);
+        return new HexaCord(x - y / 2, y);
     }
 
     public override string ToString()
@@ -44,7 +44,7 @@ public struct HexaCord
     {
         return X.ToString() + "\n" + Y.ToString();
     }
-   
+
 
     public static HexaCord FromPosition(Vector2 position)
     {
@@ -54,13 +54,9 @@ public struct HexaCord
 
         int iX = Mathf.RoundToInt(x);
         int iY = Mathf.RoundToInt(y);
-
-
         return new HexaCord(iX, iY);
 
     }
-     
-      
-    }
+}
 
 

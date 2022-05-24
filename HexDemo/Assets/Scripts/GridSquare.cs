@@ -16,9 +16,10 @@ public class GridSquare : MonoBehaviour
     private void Awake()
     {
         gridSquareCanvas = GetComponentInChildren<Canvas>();
-        hexaMesh = GetComponentInChildren<HexaMesh>();
+        hexaMesh = FindObjectOfType<HexaMesh>();
 
         hexaObjects = new HexaObject[height * width];
+     
     }
     private void Start()
     {
@@ -30,9 +31,8 @@ public class GridSquare : MonoBehaviour
             }
         }
 
+        
 
-        hexaMesh.Triangulate(hexaObjects);
-       
     }
     private void Update()
     {
@@ -70,6 +70,30 @@ public class GridSquare : MonoBehaviour
         HexaObject hexa = hexaObjects[i] = Instantiate<HexaObject>(objectPrefab);
         int randomIndex = Random.Range(0, colors.Length);
         hexa.color = colors[randomIndex];
+        
+        if (x > 0)
+        {
+            hexa.SetNeighbor(HexaDirection.W, hexaObjects[i-1]);
+        }
+        if (y > 0)
+        {
+            if ((y & 1) == 0)
+            {
+                hexa.SetNeighbor(HexaDirection.SE, hexaObjects[i - width]);
+                if (x > 0)
+                {
+                    hexa.SetNeighbor(HexaDirection.SW, hexaObjects[i - width - 1]);
+                }
+            }
+            else
+            {
+                hexa.SetNeighbor(HexaDirection.SW, hexaObjects[i - width]);
+                if (x < width - 1)
+                {
+                    hexa.SetNeighbor(HexaDirection.SE, hexaObjects[i - width + 1]);
+                }
+            }
+        }
         hexa.transform.SetParent(transform, false);
         hexa.transform.localPosition = position;
         hexa.hexCord = HexaCord.FromOffsetCoordinates(x, y);
