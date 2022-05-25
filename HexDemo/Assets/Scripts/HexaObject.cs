@@ -20,6 +20,9 @@ public class HexaObject : MonoBehaviour
     [SerializeField]
     HexaObject[] neighbors;  
     public Color color;
+    public GameObject cornerSprite;
+
+    #region Neigbors
     public HexaObject GetNeighbor(HexaDirection direction)
     {
         return neighbors[(int)direction];
@@ -29,8 +32,8 @@ public class HexaObject : MonoBehaviour
         neighbors[(int)direction] = objects;
         objects.neighbors[(int)direction.Opposite()] = this;
     }
-
-    
+    #endregion
+   
 
 }
 

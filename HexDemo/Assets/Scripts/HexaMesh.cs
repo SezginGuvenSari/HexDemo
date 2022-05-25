@@ -11,11 +11,10 @@ public class HexaMesh : MonoBehaviour
     List<int> triangles;
     MeshCollider meshCollider;
     List<Color> colors;
-    HexaObject hex;
     public Color colorMs;
+    public Color[] colorsArray;
     private void Awake()
     {
-        hex = FindObjectOfType<HexaObject>();
         hexaMesh = new Mesh();
         GetComponent<MeshFilter>().sharedMesh = hexaMesh;
         hexaMesh.name = "Hexa Mesh";
@@ -23,13 +22,12 @@ public class HexaMesh : MonoBehaviour
         triangles = new List<int>();
         meshCollider = gameObject.GetComponent<MeshCollider>();
         colors = new List<Color>();
+        int randomIndex = Random.Range(0,colorsArray.Length);
+        colorMs = colorsArray[randomIndex];
 
-        colorMs = hex.color;
         GenerateMesh();
-
     }
-
-   
+    
     public void GenerateMesh()
     {
        

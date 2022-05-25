@@ -11,18 +11,16 @@ public class GridSquare : MonoBehaviour
     public HexaObject objectPrefab;
     public Text hexaInfoTextPrefab;
     Canvas gridSquareCanvas;
-    HexaObject[] hexaObjects;
-    public Color[] colors;
+   public HexaObject[] hexaObjects;
+    public GameObject cornerSprite;
+
     private void Awake()
     {
         gridSquareCanvas = GetComponentInChildren<Canvas>();
-        hexaMesh = FindObjectOfType<HexaMesh>();
+        hexaMesh = GetComponentInChildren<HexaMesh>();
 
         hexaObjects = new HexaObject[height * width];
-     
-    }
-    private void Start()
-    {
+
         for (int y = 0, i = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
@@ -31,12 +29,10 @@ public class GridSquare : MonoBehaviour
             }
         }
 
-        
-
     }
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetButton("Fire1"))
         {
             HandleInput();
         }
@@ -57,10 +53,21 @@ public class GridSquare : MonoBehaviour
     {
         position = transform.InverseTransformPoint(position);
         HexaCord cord = HexaCord.FromPosition(position);
+        int index = cord.X + cord.Y * width + cord.Y / 2;
+        HexaObject hexa = hexaObjects[index];
+        Vector2 center = hexa.transform.localPosition;
+        for (int i = 0; i < 6; i++)
+        {
+            Vector2 corner = (center + HexaInfo.corners[i]);
+            Instantiate(cornerSprite, corner, Quaternion.identity);
+
+        }
+        Debug.Log(index);
         Debug.Log("Touch " + position);
        
     }
 
+  
     public void CreateHexaObj(int x, int y, int i)
     {
 
@@ -68,9 +75,6 @@ public class GridSquare : MonoBehaviour
         position.x = (x + y * 0.5f - y / 2) * (HexaInfo.innerRadius * 2f); 
         position.y = y * (HexaInfo.outerRadius * 1.5f);
         HexaObject hexa = hexaObjects[i] = Instantiate<HexaObject>(objectPrefab);
-        int randomIndex = Random.Range(0, colors.Length);
-        hexa.color = colors[randomIndex];
-        
         if (x > 0)
         {
             hexa.SetNeighbor(HexaDirection.W, hexaObjects[i-1]);

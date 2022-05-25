@@ -156,12 +156,8 @@ MonoBehaviour:
   height: 9
   objectPrefab: {fileID: 5320915745706759375, guid: d51451178de10224bba19ea956846872, type: 3}
   hexaInfoTextPrefab: {fileID: 2721927305968723915, guid: b452a2b60e2755447b6b9c0b85a53748, type: 3}
-  colors:
-  - {r: 0.9622642, g: 0.14978641, b: 0.14978641, a: 0}
-  - {r: 0.37366062, g: 0.9056604, b: 0.11534355, a: 0}
-  - {r: 0.08036668, g: 0.25059727, b: 0.8113208, a: 0}
-  - {r: 0.9245283, g: 0.86890846, b: 0.039248828, a: 0}
-  - {r: 0.4428051, g: 0.06741722, b: 0.9528302, a: 0}
+  hexaObjects: []
+  cornerSprite: {fileID: 3553739982957701010, guid: f1f5925fd5331c346bd955f2381c1295, type: 3}
 --- !u!4 &125732997
 Transform:
   m_ObjectHideFlags: 0

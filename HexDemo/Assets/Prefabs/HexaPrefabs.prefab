@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   color: {r: 0.103773594, g: 0.1023051, b: 0.1023051, a: 0}
+  cornerSprite: {fileID: 3553739982957701010, guid: f1f5925fd5331c346bd955f2381c1295, type: 3}
 --- !u!33 &2629797386052874661
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -134,7 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46375e18cd19e33478aca132361f18bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorMs: {r: 0.9528302, g: 0.28315237, b: 0.28315237, a: 0}
+  colorMs: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 0}
+  colorsArray:
+  - {r: 0.9622642, g: 0.05900679, b: 0.05900679, a: 0}
+  - {r: 0, g: 0.50358, b: 0.9716981, a: 0}
+  - {r: 0.87021893, g: 1, b: 0.0047169924, a: 0}
+  - {r: 0.40207103, g: 0.125534, b: 0.8584906, a: 0}
+  - {r: 0.13705955, g: 0.7075472, b: 0.050062295, a: 0}
 --- !u!65 &2428094540512017103
 BoxCollider:
   m_ObjectHideFlags: 0
