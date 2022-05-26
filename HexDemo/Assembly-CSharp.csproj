@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\GridSquare.cs" />
     <Compile Include="Assets\Scripts\HexaMesh.cs" />
     <Compile Include="Assets\Scripts\HexaCord.cs" />
+    <Compile Include="Assets\Scripts\CornerManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\ShaderMat.shader" />

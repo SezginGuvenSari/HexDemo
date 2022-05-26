@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6268974780046740403}
   - component: {fileID: 4334394677044781545}
   - component: {fileID: 6127527827119485181}
-  - component: {fileID: 2428094540512017103}
+  - component: {fileID: 1733243151935410264}
   m_Layer: 0
   m_Name: HexaPrefabs
   m_TagString: Untagged
@@ -142,8 +142,8 @@ MonoBehaviour:
   - {r: 0.87021893, g: 1, b: 0.0047169924, a: 0}
   - {r: 0.40207103, g: 0.125534, b: 0.8584906, a: 0}
   - {r: 0.13705955, g: 0.7075472, b: 0.050062295, a: 0}
---- !u!65 &2428094540512017103
-BoxCollider:
+--- !u!136 &1733243151935410264
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,6 +152,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 17.20131, y: 9.943498, z: 1}
-  m_Center: {x: -0.09364891, y: -0.07023668, z: 0}
+  m_Radius: 8.660254
+  m_Height: 17.320507
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.052396774, z: 0}

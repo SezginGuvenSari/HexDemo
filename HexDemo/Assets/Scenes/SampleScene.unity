@@ -158,6 +158,9 @@ MonoBehaviour:
   hexaInfoTextPrefab: {fileID: 2721927305968723915, guid: b452a2b60e2755447b6b9c0b85a53748, type: 3}
   hexaObjects: []
   cornerSprite: {fileID: 3553739982957701010, guid: f1f5925fd5331c346bd955f2381c1295, type: 3}
+  _IsClick: 0
+  aryCorner: []
+  _IsCorn: 0
 --- !u!4 &125732997
 Transform:
   m_ObjectHideFlags: 0
